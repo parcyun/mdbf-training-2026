@@ -9,13 +9,13 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- AOS Library (Animate On Scroll) -->
+    <!-- AOS Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Fonts -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -29,6 +29,8 @@
             --mdbf-grey-800: #333D4B;
             --mdbf-radius-md: 12px;
             --mdbf-radius-lg: 20px;
+            --apple-grey: #1D1D1F;
+            --samsung-white: #F4F4F4;
         }
         body {
             font-family: "Pretendard Variable", -apple-system, sans-serif;
@@ -38,6 +40,8 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
+
+        /* --- Styles from v13 / Toss --- */
         .btn-primary {
             background-color: var(--mdbf-blue);
             color: white;
@@ -54,22 +58,6 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(51, 100, 217, 0.2);
         }
-        .btn-weak {
-            background-color: var(--mdbf-blue-weak);
-            color: var(--mdbf-blue);
-            padding: 16px 32px;
-            border-radius: var(--mdbf-radius-md);
-            font-weight: 600;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--mdbf-grey-100);
-        }
-        .btn-weak:hover {
-            background-color: #E2EAFF;
-            transform: translateY(-1px);
-        }
         .toss-card {
             background: #ffffff;
             border: 1px solid var(--mdbf-grey-100);
@@ -81,14 +69,10 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
             transform: translateY(-2px);
         }
-        .hero-title {
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
         .nav-blur {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            background-color: rgba(255, 255, 255, 0.7); /* 투명도 조절 */
+            background-color: rgba(255, 255, 255, 0.7);
         }
         .timetable-tag {
             display: inline-block;
@@ -108,11 +92,8 @@
             transition: color 0.2s ease;
             text-decoration: none;
         }
-        .watermark-link:hover {
-            color: #ffffff;
-        }
+        .watermark-link:hover { color: #ffffff; }
 
-        /* Back to Top Button */
         #back-to-top {
             position: fixed;
             bottom: 30px;
@@ -132,13 +113,43 @@
             transition: all 0.3s ease;
             z-index: 100;
         }
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
+        #back-to-top.show { opacity: 1; visibility: visible; }
+        #back-to-top:hover { background-color: var(--mdbf-blue-hover); transform: translateY(-3px); }
+
+        /* --- Styles from Promo v2 (Capsule) --- */
+        .premium-text-gradient {
+            background: linear-gradient(135deg, #1D1D1F 0%, #3364D9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        #back-to-top:hover {
-            background-color: var(--mdbf-blue-hover);
-            transform: translateY(-3px);
+        .capsule-frame {
+            border-radius: 999px;
+            overflow: hidden;
+            background-color: var(--samsung-white);
+            aspect-ratio: 1 / 1.35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .instructor-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #E5E7EB 0%, #9CA3AF 100%);
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+        .capsule-frame:hover .instructor-img-placeholder { filter: grayscale(0%); }
+        .hero-title { letter-spacing: -0.05em; line-height: 1.05; font-weight: 900; }
+        .btn-ios {
+            background-color: var(--mdbf-blue);
+            color: white;
+            border-radius: 999px;
+            padding: 20px 60px;
+            font-weight: 700;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(51, 100, 217, 0.3);
         }
 
         html { scroll-behavior: smooth; }
@@ -146,7 +157,7 @@
 </head>
 <body class="bg-white">
 
-    <!-- Navigation -->
+    <!-- Navigation (Exactly v13) -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-100">
         <div class="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
             <div class="flex items-center">
@@ -164,22 +175,33 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="intro" class="pt-[180px] pb-[80px] px-6 text-center">
-        <div class="max-w-5xl mx-auto">
-            <span data-aos="fade-up" class="inline-block bg-[#F0F4FF] text-[#3364D9] px-4 py-1.5 rounded-full text-[14px] font-bold mb-8">
-                비영리 사단법인 디지털미디어교육콘텐츠 교사연구협회
-            </span>
-            <h1 data-aos="fade-up" data-aos-delay="100" class="hero-title text-[40px] md:text-[64px] font-extrabold text-[#191F28] mb-8 leading-[1.1]">
-                2026 몽당분필 오픈 연수<br/><span class="text-[#3364D9]">The Core, Masterclass</span>
-            </h1>
-            <p data-aos="fade-up" data-aos-delay="200" class="text-[18px] md:text-[24px] text-gray-500 mb-14 max-w-3xl mx-auto">
-                미래 교육의 핵심을 찌르는 단 하나의 마스터클래스.<br/>서울교대에서 전문가들의 실전 노하우를 경험하세요.
-            </p>
+    <!-- Hero Section (Exactly Promo v2) -->
+    <section id="intro" class="pt-[220px] pb-[120px] px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+            <div class="flex-1 text-left">
+                <div data-aos="fade-right" class="inline-block bg-blue-600 text-white px-4 py-1.5 rounded-full text-[13px] font-black mb-8 uppercase tracking-widest">
+                    2026 MDBF Open Training
+                </div>
+                <h1 data-aos="fade-up" data-aos-delay="100" class="hero-title text-[50px] md:text-[90px] premium-text-gradient mb-10 leading-[1.05]">
+                    The Core,<br/>Masterclass
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="200" class="text-[20px] md:text-[28px] text-gray-400 font-medium mb-12 leading-tight">
+                    미래 교육의 핵심을 찌르는 단 하나의 마스터클래스.<br/>서울교대에서 전문가들의 실전 노하우를 경험하세요.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a href="#apply" class="btn-ios inline-block text-white">연수 신청하기</a>
+                </div>
+            </div>
+            <div class="flex-1 relative w-full" data-aos="fade-left">
+                <div class="w-full aspect-square bg-gradient-to-tr from-blue-600 to-indigo-400 rounded-[80px] rotate-6 opacity-10 absolute -top-10 -right-10"></div>
+                <div class="w-full aspect-video md:aspect-square rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl relative z-10 bg-gray-100 flex items-center justify-center text-gray-300 font-black text-[40px]">
+                    CORE VISUAL
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 연수 정보 -->
+    <!-- 연수 정보 (v13 Section) -->
     <section id="info" class="bg-[#F9FAFB] py-24 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -211,30 +233,42 @@
         </div>
     </section>
 
-    <!-- High-end Curriculum Section (White BG) -->
-    <section id="curriculum-high" class="py-28 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 data-aos="fade-up" class="text-[36px] font-bold mb-16 text-center">하이엔드 과정</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                <div data-aos="zoom-in-up" data-aos-delay="0" class="toss-card !p-6 border-blue-100 bg-blue-50/10 text-center">
-                    <span class="timetable-tag tag-high mb-3">강의실 1 · 코딩</span>
-                    <h4 class="font-bold text-[19px] mb-1">바이브코딩</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 이상선</p>
+    <!-- High-end Sessions (Capsule Style) -->
+    <section id="curriculum-high" class="py-40 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-24">
+                <span class="text-blue-600 font-black text-[18px] uppercase tracking-widest text-left block">Track 01</span>
+                <h2 data-aos="fade-right" class="text-[40px] md:text-[64px] font-black tracking-tighter mt-4">High-end 연수 세션</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+                <div data-aos="fade-up" class="space-y-6 group">
+                    <div class="capsule-frame"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-blue-600 uppercase mb-2 block tracking-widest">강의실 1</span>
+                        <h4 class="text-[24px] font-bold group-hover:text-blue-600 transition-colors">바이브코딩</h4>
+                        <p class="text-gray-400 mt-1 font-medium">이상선 강사</p>
+                    </div>
                 </div>
-                <div data-aos="zoom-in-up" data-aos-delay="100" class="toss-card !p-6 border-blue-100 bg-blue-50/10 text-center">
-                    <span class="timetable-tag tag-high mb-3">강의실 2 · 영상</span>
-                    <h4 class="font-bold text-[19px] mb-1">미드저니 힉스필드</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 박창현</p>
+                <div data-aos="fade-up" data-aos-delay="100" class="space-y-6 group">
+                    <div class="capsule-frame"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-blue-600 uppercase mb-2 block tracking-widest">강의실 2</span>
+                        <h4 class="text-[24px] font-bold group-hover:text-blue-600 transition-colors">미드저니 힉스필드</h4>
+                        <p class="text-gray-400 mt-1 font-medium">박창현 강사</p>
+                    </div>
                 </div>
-                <div data-aos="zoom-in-up" data-aos-delay="200" class="toss-card !p-6 border-blue-200 bg-blue-50/20 text-center">
-                    <span class="timetable-tag tag-high mb-3">강의실 3 · AI 에이전트</span>
-                    <h4 class="font-bold text-[19px] mb-1">클로드 코드 하네스 활용</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 임세범</p>
+                <div data-aos="fade-up" data-aos-delay="200" class="space-y-6 group">
+                    <div class="capsule-frame"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-blue-600 uppercase mb-2 block tracking-widest">강의실 3</span>
+                        <h4 class="text-[24px] font-bold group-hover:text-blue-600 transition-colors">클로드 코드 하네스 활용</h4>
+                        <p class="text-gray-400 mt-1 font-medium">임세범 강사</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- High-end Timetable -->
+            <!-- High-end Timetable (Exactly v13) -->
             <div data-aos="fade-up" class="bg-blue-50/30 rounded-[24px] p-8 md:p-12 border border-blue-50">
                 <h4 class="text-[20px] font-bold mb-8 text-blue-700">하이엔드 과정 공통 시간표</h4>
                 <div class="space-y-6">
@@ -258,45 +292,68 @@
         </div>
     </section>
 
-    <!-- Normal Curriculum Section (Light Grey BG) -->
-    <section id="curriculum-normal" class="py-28 px-6 bg-[#F9FAFB]">
-        <div class="max-w-6xl mx-auto">
-            <h2 data-aos="fade-up" class="text-[36px] font-bold mb-16 text-center">캐주얼 과정</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                <div data-aos="fade-up" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 4</span>
-                    <h4 class="font-bold text-[18px] mb-1">Notion 실무 활용</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 손수현</p>
+    <!-- Casual Sessions (Capsule Style) -->
+    <section id="curriculum-normal" class="py-40 px-6 bg-[#F9FAFB]">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-24 text-right">
+                <span class="text-amber-500 font-black text-[18px] uppercase tracking-widest block">Track 02</span>
+                <h2 data-aos="fade-left" class="text-[40px] md:text-[64px] font-black tracking-tighter mt-4">Casual 연수 세션</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 mb-16">
+                <!-- Row 1 -->
+                <div data-aos="fade-up" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 4</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">Notion 실무 활용</h4>
+                        <p class="text-gray-400 mt-1 font-medium">손수현 강사</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="50" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 5</span>
-                    <h4 class="font-bold text-[18px] mb-1">Canva 디자인 전략</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 황은지</p>
+                <div data-aos="fade-up" data-aos-delay="50" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 5</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">Canva 디자인 전략</h4>
+                        <p class="text-gray-400 mt-1 font-medium">황은지 강사</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 6</span>
-                    <h4 class="font-bold text-[18px] mb-1">Google 워크스페이스</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 장성환</p>
+                <div data-aos="fade-up" data-aos-delay="100" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 6</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">Google 워크스페이스</h4>
+                        <p class="text-gray-400 mt-1 font-medium">장성환 강사</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="150" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 7</span>
-                    <h4 class="font-bold text-[18px] mb-1">직무연수 도전기</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 채희재</p>
+                <!-- Row 2 -->
+                <div data-aos="fade-up" data-aos-delay="150" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 7</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">직무연수 도전기</h4>
+                        <p class="text-gray-400 mt-1 font-medium">채희재 강사</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 8</span>
-                    <h4 class="font-bold text-[18px] mb-1">AI 활용 수업 설계</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 조민의</p>
+                <div data-aos="fade-up" data-aos-delay="200" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 8</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">AI 활용 수업 설계</h4>
+                        <p class="text-gray-400 mt-1 font-medium">조민의 강사</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="250" class="toss-card !p-6 text-center">
-                    <span class="timetable-tag tag-normal mb-3">강의실 9</span>
-                    <h4 class="font-bold text-[18px] mb-1">예술활용 교과교육</h4>
-                    <p class="text-gray-500 text-[14px]">강사: 박병우, 이정은</p>
+                <div data-aos="fade-up" data-aos-delay="250" class="space-y-6 group text-center">
+                    <div class="capsule-frame bg-amber-50"><div class="instructor-img-placeholder"></div></div>
+                    <div class="px-2">
+                        <span class="text-[12px] font-black text-amber-500 uppercase mb-2 block tracking-widest">강의실 9</span>
+                        <h4 class="text-[22px] font-bold group-hover:text-amber-500 transition-colors">예술활용 교과교육</h4>
+                        <p class="text-gray-400 mt-1 font-medium">박병우, 이정은 강사</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Normal Timetable -->
+            <!-- Casual Timetable (Exactly v13) -->
             <div data-aos="fade-up" class="bg-gray-200/30 rounded-[24px] p-8 md:p-12 border border-gray-200">
                 <h4 class="text-[20px] font-bold mb-8 text-gray-700">캐주얼 과정 공통 시간표</h4>
                 <div class="space-y-6">
@@ -325,7 +382,7 @@
         </div>
     </section>
 
-    <!-- Apply Section -->
+    <!-- Apply Section (Exactly v13) -->
     <section id="apply" class="py-28 px-6 text-center bg-white">
         <div class="max-w-4xl mx-auto">
             <h2 data-aos="fade-up" class="text-[32px] md:text-[42px] font-bold mb-8">성장의 기회를 예약하세요</h2>
@@ -341,9 +398,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#0F172A] py-20 px-6 relative">
-        <div class="max-w-6xl mx-auto text-white">
+    <!-- Footer (Exactly v13) -->
+    <footer class="bg-[#0F172A] py-20 px-6 relative text-white">
+        <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row items-start gap-12 mb-16 pb-16 border-b border-white/10">
                 <img src="logo_white.png" alt="MDBF Logo White" class="h-14 w-auto object-contain">
             </div>
