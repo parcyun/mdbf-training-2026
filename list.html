@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDBF 연수 목록 | The Core, Masterclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+    <style>
+        body { font-family: "Pretendard Variable", sans-serif; background-color: #F9FAFB; }
+        .card { background: white; border: 1px solid #E5E8EB; border-radius: 20px; transition: all 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl font-black text-center mb-16">전체 연수 목록</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 9개의 연수 카드 반복 -->
+            <script>
+                const sessions = [
+                    "바이브코딩", "미드저니 힉스필드", "클로드 코드 하네스",
+                    "Notion 실무 활용", "Canva 디자인 전략", "Google 워크스페이스",
+                    "직무연수 도전기", "AI 활용 수업 설계", "예술활용 교과교육"
+                ];
+                sessions.forEach(name => {
+                    document.write(`
+                        <div class="card p-8 text-center flex flex-col items-center">
+                            <div class="w-20 h-20 bg-blue-50 rounded-full mb-6"></div>
+                            <h3 class="text-xl font-bold mb-4">${name}</h3>
+                            <button onclick="alert('결제 링크 준비 중입니다.')" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700">신청하기</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+        <div class="text-center mt-20">
+            <a href="index.html" class="text-gray-500 font-medium hover:underline">← 메인 페이지로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>
